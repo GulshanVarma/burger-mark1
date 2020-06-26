@@ -8,3 +8,25 @@
     margin: auto;
     padding: 10px 0;
 }
+.BurgerControls button{
+    display: block;
+    font: inherit;
+    padding: 5px;
+    margin: 0 5px;
+    border: 2px solid #AA6817;
+    cursor: pointer;
+    outline: none;
+}
+
+.BurgerControls .button1{
+    display: block;
+    font: inherit;
+    padding: 5px;
+    margin: 0 5px;
+    background-color: rgb(194, 146, 88);
+    border: 3px solid rgb(90, 52, 5);
+    cursor: pointer;
+    outline: none;
+    width: 120px;
+    height: 30px;
+}

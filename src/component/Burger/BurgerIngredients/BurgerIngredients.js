@@ -3,7 +3,6 @@ import classes from './BurgerIngredients.module.css'
 
 const burgerIngredients =(props) =>{
     const SwitchCase = () =>{
-        console.log('[BI]',props.type);
         
         switch (props.type) {
             case 'bread':
