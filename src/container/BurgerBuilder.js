@@ -19,8 +19,14 @@ class BurgerBuilder extends Component{
         ingredients : {
             'salad': 0,
             'cheese' : 0,
-            'meat' :  0,
+            'meat' : 0,
             'patty' : 0
+        },
+        disabledIngredients: {
+            'salad': true,
+            'cheese' : true,
+            'meat' : true,
+            'patty' : true
         },
         totalPrice : 4,
         purchasing : false,
@@ -36,22 +42,29 @@ class BurgerBuilder extends Component{
     this.setState({totalPrice:price});
     }
 
-    addIngredients = (type) =>{
-        const testIngredientState = {...this.state.ingredients};
-        const testIngredientCount = testIngredientState[type] + 1;
-        testIngredientState[type] = testIngredientCount;
-        this.setState({ingredients:testIngredientState})
-        this.calcTotalPrice(testIngredientState);
+    addIngredients = (type) =>{        
+        const testState = {...this.state};
+        const testIngredientCount = testState.ingredients[type] + 1;
+        testState.ingredients[type] = testIngredientCount;  // add ing
+        testState.disabledIngredients[type] = false;    // disable button
+
+        this.setState({ingredients : testState.ingredients,
+            disabledIngredients: testState.disabledIngredients});
+        console.log(testState,type);
+        
+        this.calcTotalPrice(testState.ingredients);     //price update
     }
     removeIngredients = (type) =>{
-        // console.log('in remove');
-        const testIngredientState = {...this.state.ingredients};
-        let testIngredientCount = testIngredientState[type];
-        if(testIngredientCount !== 0){
+        const testState = {...this.state};
+        let testIngredientCount = testState.ingredients[type];
+        if(testIngredientCount >= 1){
             testIngredientCount = testIngredientCount - 1;
-            testIngredientState[type] = testIngredientCount;
-            this.setState({ingredients:testIngredientState})
-            this.calcTotalPrice(testIngredientState);
+            if (testIngredientCount === 0 ) testState.disabledIngredients[type] = true;
+            
+            testState.ingredients[type] = testIngredientCount;
+            this.setState({ingredients : testState.ingredients,
+                disabledIngredients: testState.disabledIngredients});
+            this.calcTotalPrice(testState.ingredients);
         }
     }
     render(){
@@ -63,6 +76,7 @@ class BurgerBuilder extends Component{
                     addingredients = {this.addIngredients}
                     removeingredients = {this.removeIngredients}
                     canpurchase = {this.state.purchasable}
+                    disablestate = {this.state.disabledIngredients}
                 />
                 
                 // require show and clicked

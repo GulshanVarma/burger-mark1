@@ -9,6 +9,7 @@ const BurgerControls = (props) =>{
         {label : 'Meat', type : 'meat'},
         {label : 'Patty', type : 'patty'},
     ]
+
     // label to display, type to change in ingredients
     const test =() => {
         console.log('order clicked',!props.canpurchase)
@@ -23,6 +24,7 @@ const BurgerControls = (props) =>{
                         type={el['type']} 
                         addingredients={() => {props.addingredients(el['type'])}}
                         removeingredients={() => {props.removeingredients(el['type'])}}
+                        disablebutton={props.disablestate[el['type']]}
                     />
                 })
             }

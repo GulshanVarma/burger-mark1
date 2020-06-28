@@ -6,9 +6,8 @@ const BurgerControl = (props) =>{
     return(
         <div className = {classes.BuildControl}>
             {props.label}
-            <button disabled={props.canpurchase} onClick={props.addingredients}> + </button>
-            <button disabled={props.canpurchase} onClick={props.removeingredients}> - </button>
-
+            <button onClick={props.addingredients}> + </button>
+            <button disabled={props.disablebutton} onClick={props.removeingredients}> - </button>
         </div>
     )
 }
