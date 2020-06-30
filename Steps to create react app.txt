@@ -1,0 +1,30 @@
+// initialize enviornment
+
+npm install -g create-react-app
+npm init react-app my-app or create-react-app my-app --script-version 1.1.5
+cd my-app	
+npm start
+
+----------------------------------------------------------------------------------
+
+// initialize github
+// create repo
+
+install git history in vscode
+
+git config user.name <uname>
+git config user.email <email>
+
+git init
+git add README.md
+
+git remote add test https://github.com/GulshanVarma/sample-bind-react.git
+git remote -v  // to check connections
+
+git add *
+git commit -m 'ok'
+git push -u test master
+
+git push <remote> <branch>
+	
+git checkout -b <name> // create a new branch and push

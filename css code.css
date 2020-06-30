@@ -1,0 +1,110 @@
+padding: 25px 50px 75px 100px;
+top padding is 25px
+right padding is 50px
+bottom padding is 75px
+left padding is 100px
+
+-------------------------------------------------------
+.Person {
+    width: 60%;
+    margin: 16px auto;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 3px #ccc;
+    padding: 16px;
+    text-align: center;
+}
+-----------------------------------------------------
+// while adding multiple css files, WORKING BEST
+
+.Button{
+  padding: 5px 2px 5px 2px;
+  border-color: white;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.Red{		   
+  background-color: red;
+}
+.Red:hover{
+  background-color: hotpink;
+  color: black;
+}										#className = {classes.Button classes.Red}
+
+.Green{
+  background-color: green;
+}
+.Green:hover{
+  background-color: lightgreen; 
+  color: black;
+}
+----------------------------------------------------------------------------------------------
+.input{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid #555;
+    outline: none;
+}
+.input:focus{
+    background-color: lightblue;
+}
+----------------------------------------------------------------------------------------
+FORKY HEader css
+
+.header {
+  grid-area: head;			-------------------------------> imp to strecth grid over head
+  background-color: #F9F5F3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+}
+.header__logo {
+margin-left: 4rem;
+height: 4.5rem;
+display: block; 
+}
+......<img src="img/logo.png" alt="Logo" class="header__logo">  //using logo
+
+
+.search {
+    background-color: #fff;
+    border-radius: 10rem;
+    display: flex;				-------------------->search bar postion , flex (default  flex-direction: row;)
+    align-items: center;
+    padding-left: 3rem;
+    transition: all .3s;
+}
+
+--------------------------------------------------------------------------------------
+// under container we had all 3 sections
+.container {
+    max-width: 120rem;
+    margin: 4vw auto;
+    background-color: #fff;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2rem 6rem 0.5rem rgba(101, 90, 86, 0.2);
+    display: grid;
+    grid-template-rows: 10rem minmax(100rem, auto);
+    grid-template-columns: 1.1fr 2fr 1.1fr;
+    grid-template-areas:			(------------------------> imp for create grids)
+        "head head head"
+        "list recipe shopping";
+}
+--------------------------------------------------------------------------------------
+//show ing in grids not list (middle div)
+
+.recipe__ingredient-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 1.5rem;
+    grid-row-gap: 2.5rem;
+    list-style: none;
+    margin-bottom: 3rem;
+}
