@@ -2,6 +2,10 @@ import React from 'react'
 import BurgerControl from './BurgerControl/BurgerControl'
 import classes from './BurgerControls.module.css'
 
+
+//canPurchase is for order button
+// purchaseState is to display order summary
+
 const BurgerControls = (props) =>{
     const labelState = [
         {label : 'Salad', type : 'salad'},
@@ -11,9 +15,6 @@ const BurgerControls = (props) =>{
     ]
 
     // label to display, type to change in ingredients
-    const test =() => {
-        console.log('order clicked',!props.canpurchase)
-    }
     return(
         <div className = {classes.BurgerControls}>
             {
@@ -31,10 +32,11 @@ const BurgerControls = (props) =>{
             <button 
                 className={classes.button1} 
                 disabled={!props.canpurchase} 
-                onClick={test}>
+                onClick={props.purchaseState}>
                 Order</button>
         </div>
     )
 }
+
 
 export default BurgerControls;

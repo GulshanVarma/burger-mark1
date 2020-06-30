@@ -2,23 +2,25 @@ import React from 'react'
 import {Component} from 'react'
 import Burger from '../component/Burger/Burger'
 import BurgerControls from '../component/Burger/BurgerControls/BurgerControls'
+import Modal from '../UI/Modal/Modal'
+import OrderSummary from '../component/OrderSummary/OrderSummary'
+import Aux from '../hoc/Aux'
 
 const statePrice = {
-    'salad': 2,
-    'cheese' : 1,
-    'meat' :  3,
+    'salad': 1.5,
+    'cheese' : 1.5,
+    'meat' :  3.2,
     'patty' : 2
 }
 class BurgerBuilder extends Component{
     // TASKS
     
-    // + - enable disable
     // modal to orderSummary
     // purchasing to display modal
     state = {
         ingredients : {
-            'salad': 0,
-            'cheese' : 0,
+            'salad': 1,
+            'cheese' : 1,
             'meat' : 0,
             'patty' : 0
         },
@@ -28,16 +30,16 @@ class BurgerBuilder extends Component{
             'meat' : true,
             'patty' : true
         },
-        totalPrice : 4,
-        purchasing : false,
-        purchasable : false
+        totalPrice : 4.00,
+        purchasing : false, // when order button is clicked, in purchasing state
+        purchasable : false // enable order button  
     }
     calcTotalPrice = (stateTemp) => {
         const price = Object.keys(stateTemp).map(el => {
             return (stateTemp[el] * statePrice[el])
         }).reduce((sum,el) => {
             return sum+el;
-        },4);
+        },4).toFixed(2);
     this.setState({purchasable: (price > 4)});
     this.setState({totalPrice:price});
     }
@@ -67,23 +69,34 @@ class BurgerBuilder extends Component{
             this.calcTotalPrice(testState.ingredients);
         }
     }
+
+    togglePurchaseState = () =>{        
+        const purchaseState = !this.state.purchasing;
+        this.setState({purchasing : purchaseState})
+        console.log('[BB] toggle, now ps = ',this.state.purchasing  );
+    }
     render(){
         console.log(this.state);
         return(
-            <div>
-                <Burger ingredients={this.state.ingredients}/>
+            <Aux>
+                {console.log('[BB] ps = ',this.state.purchasing)}
+                <Modal show={true} clicked={this.togglePurchaseState}>
+                    <OrderSummary 
+                        ingredients={this.state.ingredients} 
+                        totalprice={this.state.totalPrice}
+                    />
+                </Modal>
+
+                {/* <Burger ingredients={this.state.ingredients}/>
+                
                 <BurgerControls 
                     addingredients = {this.addIngredients}
                     removeingredients = {this.removeIngredients}
                     canpurchase = {this.state.purchasable}
                     disablestate = {this.state.disabledIngredients}
-                />
-                
-                // require show and clicked
-                {/* <Modal>
-                    [BB] Order Summary
-                </Modal> */}
-            </div>
+                    purchaseState = {this.togglePurchaseState}
+                /> */}
+            </Aux>
         )
     }
 }

@@ -1,3 +1,5 @@
 .Layout{
-    margin-top: 30px;
+    position: absolute;
+    height: 100%;
+    width: 100%;
 }

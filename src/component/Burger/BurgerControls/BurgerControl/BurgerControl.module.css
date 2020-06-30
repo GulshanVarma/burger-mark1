@@ -15,3 +15,6 @@
     cursor: pointer;
     outline: none;
 }
+.BuildControl button:disabled{
+    border-color: red;
+}

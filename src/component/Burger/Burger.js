@@ -6,7 +6,7 @@ const burger =(props) =>{
     const BI = Object.keys(props.ingredients).map((el,index) =>{
         return (
             [...Array(props.ingredients[el])].map((_,i) => {
-                return <BurgerIngredients key={(index*100)+i} type={el}/>
+                return <BurgerIngredients key={(index)+i} type={el}/>
             })
         )
 

@@ -1,11 +1,11 @@
 import React from 'react';
 import BurgerBuilder from './container/BurgerBuilder'
 import Layout from './UI/layout'
-import './App.css';
+import classes from './App.module.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className={classes.App}>
       <Layout>
         <BurgerBuilder />
       </Layout>
