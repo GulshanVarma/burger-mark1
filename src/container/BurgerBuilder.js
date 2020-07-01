@@ -6,6 +6,12 @@ import Modal from '../UI/Modal/Modal'
 import OrderSummary from '../component/OrderSummary/OrderSummary'
 import Aux from '../hoc/Aux'
 
+// Task : 
+// create appropriate buttons in modal
+// ajax 
+// routing
+// redux
+
 const statePrice = {
     'salad': 1.5,
     'cheese' : 1.5,
@@ -84,6 +90,7 @@ class BurgerBuilder extends Component{
                     <OrderSummary 
                         ingredients={this.state.ingredients} 
                         totalprice={this.state.totalPrice}
+                        cancelpurchase={this.togglePurchaseState}
                     />
                 </Modal>
 

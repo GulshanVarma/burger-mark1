@@ -7,9 +7,9 @@ import Backdrop from '../Backdrop/Backdrop'
 const modal = ( props ) => (
     <Aux>
     <Backdrop show={props.show} clicked={props.clicked}/>
-        {(props.show) ? <div
-            className={classes.Modal}>
-                {props.children}
+        {(props.show) ? 
+        <div className={classes.Modal}>
+            {props.children}
         </div> : null } 
     </Aux>
 );
