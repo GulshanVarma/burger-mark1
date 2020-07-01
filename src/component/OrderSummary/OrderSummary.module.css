@@ -12,10 +12,19 @@
     outline: none;
   }
   
-  .buttons{
-
-    
+  .buttons{    
     display: flex;
     justify-content: center;
     flex-direction: row;
   }
+
+  .burger {
+    background-color:green;
+    width: 100%;
+    margin: auto;
+    height: 10%;
+    overflow: auto;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem;
+}

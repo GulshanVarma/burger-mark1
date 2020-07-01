@@ -1,11 +1,14 @@
 .Burger {
     background-color: rgb(235, 220, 213);
     width: 100%;
+    position: fixed;
     padding-top: 20px;
     margin: auto;
-    height: 380px;
+    /* height: 380px; */
     overflow: auto;
     text-align: center;
     font-weight: bold;
     font-size: 1.2rem;
+    bottom: 35%;
+    top: 5%;
 }

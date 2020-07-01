@@ -5,9 +5,10 @@ import BurgerControls from '../component/Burger/BurgerControls/BurgerControls'
 import Modal from '../UI/Modal/Modal'
 import OrderSummary from '../component/OrderSummary/OrderSummary'
 import Aux from '../hoc/Aux'
+import Axios from '../axiosOrders'
 
 // Task : 
-// create appropriate buttons in modal
+// checkout in Modal
 // ajax 
 // routing
 // redux
@@ -19,10 +20,6 @@ const statePrice = {
     'patty' : 2
 }
 class BurgerBuilder extends Component{
-    // TASKS
-    
-    // modal to orderSummary
-    // purchasing to display modal
     state = {
         ingredients : {
             'salad': 0,
@@ -40,6 +37,16 @@ class BurgerBuilder extends Component{
         purchasing : false, // when order button is clicked, in purchasing state
         purchasable : false // enable order button  
     }
+
+    componentWillMount(){
+        Axios.get('./ingredients.json').then(
+            response =>{
+                this.setState({ingredients: response.data})
+            }
+        ).catch(error => {console.log(error)})
+        console.log('state loaded');
+    }
+
     calcTotalPrice = (stateTemp) => {
         const price = Object.keys(stateTemp).map(el => {
             return (stateTemp[el] * statePrice[el])
@@ -81,6 +88,26 @@ class BurgerBuilder extends Component{
         this.setState({purchasing : purchaseState})
         console.log('[BB] toggle, now ps = ',this.state.purchasing  );
     }
+
+    continuePuchaseHandler = () =>{
+        const orders = {
+            ingredients : this.state.ingredients,
+            price : this.state.totalPrice,
+            customer : {
+                Name : 'Gulshan',
+                Street : 'Chuna Bhatti',
+                City : 'Ragada Patti'
+            },
+            Delivery : 'Express'
+        }
+        Axios.post('/orders.json', orders).then(
+            response => console.log(response)   
+        ).catch(
+            error => console.log(error)
+        );
+        document.write('ordered');
+    }
+
     render(){
         console.log(this.state);
         return(
@@ -91,6 +118,7 @@ class BurgerBuilder extends Component{
                         ingredients={this.state.ingredients} 
                         totalprice={this.state.totalPrice}
                         cancelpurchase={this.togglePurchaseState}
+                        continuepurchase={this.continuePuchaseHandler}
                     />
                 </Modal>
 

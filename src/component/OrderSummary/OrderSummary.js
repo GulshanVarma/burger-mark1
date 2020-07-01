@@ -3,7 +3,7 @@ import classes from './OrderSummary.module.css'
 
 const OrderSummary = (props) => {
     return(
-        <div className={classes.OrderSummary}>
+        <div className={classes.OrderSummary}>            
             <p> You Delicious Burger Have </p>
                 <ul style={{listStyleType : 'none'}}>
                 {
@@ -14,7 +14,7 @@ const OrderSummary = (props) => {
                 </ul>
             <h4> total price = {props.totalprice} $</h4> 
             <div className={classes.buttons}>
-                <button> continue </button>
+                <button onClick={props.continuepurchase}> continue </button>
                 <button onClick={props.cancelpurchase}> cancel </button> 
             </div>
         </div>
