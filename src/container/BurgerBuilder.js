@@ -41,20 +41,24 @@ class BurgerBuilder extends Component{
     componentWillMount(){
         Axios.get('./ingredients.json').then(
             response =>{
-                this.setState({ingredients: response.data})
+                this.setState({ingredients: response.data});
+                this.calcTotalPrice(response.data);
             }
         ).catch(error => {console.log(error)})
-        console.log('state loaded');
-    }
-
+    }    
+    
     calcTotalPrice = (stateTemp) => {
-        const price = Object.keys(stateTemp).map(el => {
+        const disableState = {...this.state.disabledIngredients};
+        const price = Object.keys(stateTemp).map((el,index) => {
+            disableState[el] = (stateTemp[el] == 0);
             return (stateTemp[el] * statePrice[el])
         }).reduce((sum,el) => {
             return sum+el;
         },4).toFixed(2);
     this.setState({purchasable: (price > 4)});
     this.setState({totalPrice:price});
+    this.setState({disabledIngredients:disableState});
+    
     }
 
     addIngredients = (type) =>{        
@@ -65,7 +69,6 @@ class BurgerBuilder extends Component{
 
         this.setState({ingredients : testState.ingredients,
             disabledIngredients: testState.disabledIngredients});
-        console.log(testState,type);
         
         this.calcTotalPrice(testState.ingredients);     //price update
     }
@@ -86,7 +89,6 @@ class BurgerBuilder extends Component{
     togglePurchaseState = () =>{        
         const purchaseState = !this.state.purchasing;
         this.setState({purchasing : purchaseState})
-        console.log('[BB] toggle, now ps = ',this.state.purchasing  );
     }
 
     continuePuchaseHandler = () =>{
@@ -109,10 +111,8 @@ class BurgerBuilder extends Component{
     }
 
     render(){
-        console.log(this.state);
         return(
             <Aux>
-                {console.log('[BB] ps = ',this.state.purchasing)}
                 <Modal show={this.state.purchasing} clicked={this.togglePurchaseState}>
                     <OrderSummary 
                         ingredients={this.state.ingredients} 
