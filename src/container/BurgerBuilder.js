@@ -19,8 +19,8 @@ class BurgerBuilder extends Component{
     // purchasing to display modal
     state = {
         ingredients : {
-            'salad': 1,
-            'cheese' : 1,
+            'salad': 0,
+            'cheese' : 0,
             'meat' : 0,
             'patty' : 0
         },
@@ -80,14 +80,14 @@ class BurgerBuilder extends Component{
         return(
             <Aux>
                 {console.log('[BB] ps = ',this.state.purchasing)}
-                <Modal show={true} clicked={this.togglePurchaseState}>
+                <Modal show={this.state.purchasing} clicked={this.togglePurchaseState}>
                     <OrderSummary 
                         ingredients={this.state.ingredients} 
                         totalprice={this.state.totalPrice}
                     />
                 </Modal>
 
-                {/* <Burger ingredients={this.state.ingredients}/>
+                <Burger ingredients={this.state.ingredients}/>
                 
                 <BurgerControls 
                     addingredients = {this.addIngredients}
@@ -95,7 +95,7 @@ class BurgerBuilder extends Component{
                     canpurchase = {this.state.purchasable}
                     disablestate = {this.state.disabledIngredients}
                     purchaseState = {this.togglePurchaseState}
-                /> */}
+                />
             </Aux>
         )
     }

@@ -2,15 +2,15 @@ import React from 'react';
 
 import classes from './Modal.module.css';
 import Aux from '../../hoc/Aux';
+import Backdrop from '../Backdrop/Backdrop'
 
 const modal = ( props ) => (
     <Aux>
-        <div className={classes.Container}>
-            <div
-                className={classes.Modal}>
-                    <p className={classes.warning}>{props.children}</p>
-            </div>
-        </div>
+    <Backdrop show={props.show} clicked={props.clicked}/>
+        {(props.show) ? <div
+            className={classes.Modal}>
+                {props.children}
+        </div> : null } 
     </Aux>
 );
 

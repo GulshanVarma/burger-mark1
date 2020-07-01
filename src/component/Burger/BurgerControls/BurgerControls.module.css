@@ -1,5 +1,6 @@
 .BurgerControls{
     width: 100%;
+    height: 100%;
     background-color: #CF8F2E;
     display: flex;
     flex-flow: column;
@@ -7,6 +8,7 @@
     box-shadow: 0 2px 1px #ccc;
     margin: auto;
     padding: 10px 0;
+    bottom:0;
 }
 .BurgerControls button{
     display: block;
