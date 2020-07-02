@@ -10,6 +10,10 @@ import Loader from '../component/UI/Loader/Loader'
 
 // Task : 
 // routing
+    // create checkout component to route
+    // create Taskbar for linkks
+    // add loader spin
+
 // redux
 
 const statePrice = {
@@ -101,12 +105,15 @@ class BurgerBuilder extends Component{
             },
             Delivery : 'Express'
         }
-        Axios.post('/orders.json', orders).then(
-            response => console.log(response)   
-        ).catch(
-            error => console.log(error)
-        );
-        document.write('ordered');
+
+        /* push order to checkout page to show all orders in checkout page */
+
+        // Axios.post('/orders.json', orders).then(
+        //     response => console.log(response)   
+        // ).catch(
+        //     error => console.log(error)
+        // );
+        // document.write('ordered');
     }
 
     render(){
