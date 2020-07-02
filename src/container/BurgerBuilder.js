@@ -8,8 +8,6 @@ import Aux from '../hoc/Aux'
 import Axios from '../axiosOrders'
 
 // Task : 
-// checkout in Modal
-// ajax 
 // routing
 // redux
 
@@ -55,10 +53,9 @@ class BurgerBuilder extends Component{
         }).reduce((sum,el) => {
             return sum+el;
         },4).toFixed(2);
-    this.setState({purchasable: (price > 4)});
-    this.setState({totalPrice:price});
-    this.setState({disabledIngredients:disableState});
-    
+        this.setState({purchasable: (price > 4)});
+        this.setState({totalPrice:price});
+        this.setState({disabledIngredients:disableState});
     }
 
     addIngredients = (type) =>{        
@@ -72,6 +69,7 @@ class BurgerBuilder extends Component{
         
         this.calcTotalPrice(testState.ingredients);     //price update
     }
+    
     removeIngredients = (type) =>{
         const testState = {...this.state};
         let testIngredientCount = testState.ingredients[type];
