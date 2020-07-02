@@ -2,10 +2,11 @@ import React from 'react'
 import {Component} from 'react'
 import Burger from '../component/Burger/Burger'
 import BurgerControls from '../component/Burger/BurgerControls/BurgerControls'
-import Modal from '../UI/Modal/Modal'
+import Modal from '../component/UI/Modal/Modal'
 import OrderSummary from '../component/OrderSummary/OrderSummary'
 import Aux from '../hoc/Aux'
 import Axios from '../axiosOrders'
+import Loader from '../component/UI/Loader/Loader'
 
 // Task : 
 // routing
