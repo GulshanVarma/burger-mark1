@@ -6,7 +6,8 @@ import Modal from '../component/UI/Modal/Modal'
 import OrderSummary from '../component/OrderSummary/OrderSummary'
 import Aux from '../hoc/Aux'
 import Axios from '../axiosOrders'
-import Loader from '../component/UI/Loader/Loader'
+import {withRouter} from 'react-router-dom'
+// import Loader from '../component/UI/Loader/Loader'
 
 // Task : 
 // routing
@@ -105,7 +106,7 @@ class BurgerBuilder extends Component{
             },
             Delivery : 'Express'
         }
-
+        this.props.history.push("/checkout");
         /* push order to checkout page to show all orders in checkout page */
 
         // Axios.post('/orders.json', orders).then(
@@ -142,4 +143,4 @@ class BurgerBuilder extends Component{
     }
 }
 
-export default BurgerBuilder;
+export default withRouter(BurgerBuilder);
