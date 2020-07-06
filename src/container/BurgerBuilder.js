@@ -7,6 +7,7 @@ import OrderSummary from '../component/OrderSummary/OrderSummary'
 import Aux from '../hoc/Aux'
 import Axios from '../axiosOrders'
 import {withRouter} from 'react-router-dom'
+import Loader from '../component/UI/Loader/Loader'
 // import Loader from '../component/UI/Loader/Loader'
 
 // Task : 
@@ -25,12 +26,7 @@ const statePrice = {
 }
 class BurgerBuilder extends Component{
     state = {
-        ingredients : {
-            'salad': 0,
-            'cheese' : 0,
-            'meat' : 0,
-            'patty' : 0
-        },
+        ingredients : null,
         disabledIngredients: {
             'salad': true,
             'cheese' : true,
@@ -39,14 +35,17 @@ class BurgerBuilder extends Component{
         },
         totalPrice : 4.00,
         purchasing : false, // when order button is clicked, in purchasing state
-        purchasable : false // enable order button  
+        purchasable : false, // enable order button  
+        loading : true
     }
 
     componentWillMount(){
         Axios.get('./ingredients.json').then(
             response =>{
+                console.log('loading from server');
                 this.setState({ingredients: response.data});
                 this.calcTotalPrice(response.data);
+                this.setState({loading:false});
             }
         ).catch(error => {console.log(error)})
     }    
@@ -118,6 +117,15 @@ class BurgerBuilder extends Component{
     }
 
     render(){
+        let burger = null;
+        console.log(this.state.loading);
+        if(this.state.loading)
+        {
+            burger = <Loader />
+        }
+        else{
+            burger = <Burger ingredients={this.state.ingredients}/>
+        };
         return(
             <Aux>
                 <Modal show={this.state.purchasing} clicked={this.togglePurchaseState}>
@@ -129,7 +137,7 @@ class BurgerBuilder extends Component{
                     />
                 </Modal>
 
-                <Burger ingredients={this.state.ingredients}/>
+                {burger}
                 
                 <BurgerControls 
                     addingredients = {this.addIngredients}

@@ -8,7 +8,9 @@ class Checkout extends Component{
     }
     render(){
         return (
-            <p style={{zAxis : 100}}>Checkout page</p>
+            <div style ={{paddingTop:'50px'}}>
+                <p>checkoout page</p>
+            </div>
         )
     }
 }
