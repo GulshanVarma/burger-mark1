@@ -1,6 +1,6 @@
 import React from 'react'
 import classes from './layout.module.css'
-import Aux from '../../hoc/Aux'
+import Aux from '../../hoc/_Aux'
 import Toolbar from '../Navigations/Toolbar/Toolbar'
 
 const layout =(props) =>{
