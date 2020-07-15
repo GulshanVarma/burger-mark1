@@ -13,10 +13,12 @@ const BurgerControls = (props) =>{
         {label : 'Meat', type : 'meat'},
         {label : 'Patty', type : 'patty'},
     ]
+    console.log('[BC] price = ',props.price);
 
     // label to display, type to change in ingredients
     return(
         <div className = {classes.BurgerControls}>
+         <p>Current Price: <strong>${props.price.toFixed(2)}</strong></p>
             {
                 labelState.map((el,i) => {
                     return <BurgerControl 

@@ -28,15 +28,7 @@ const statePrice = {
 }
 class BurgerBuilder extends Component{
     state = {
-        disabledIngredients: {
-            'salad': true,
-            'cheese' : true,
-            'meat' : true,
-            'patty' : true
-        },
-        totalPrice : 4.00,
         purchasing : false, // when order button is clicked, in purchasing state
-        purchasable : false, // enable order button  
         loading : true
     }
 
@@ -50,45 +42,6 @@ class BurgerBuilder extends Component{
         //     }
         // ).catch(error => {console.log(error)})
     // }    
-    
-    calcTotalPrice = (stateTemp) => {
-        const disableState = {...this.state.disabledIngredients};
-        const price = Object.keys(stateTemp).map((el,index) => {
-            disableState[el] = (stateTemp[el] === 0);
-            return (stateTemp[el] * statePrice[el])
-        }).reduce((sum,el) => {
-            return sum+el;
-        },4).toFixed(2);
-        this.setState({purchasable: (price > 4)});
-        this.setState({totalPrice:price});
-        this.setState({disabledIngredients:disableState});
-    }
-
-    // addIngredients = (type) =>{        
-    //     const testState = {...this.state};
-    //     const testIngredientCount = testprops.ingredients[type] + 1;
-    //     testprops.ingredients[type] = testIngredientCount;  // add ing
-    //     testState.disabledIngredients[type] = false;    // disable button
-
-    //     this.setState({ingredients : testprops.ingredients,
-    //         disabledIngredients: testState.disabledIngredients});
-        
-    //     this.calcTotalPrice(testprops.ingredients);     //price update
-    // }
-    
-    // removeIngredients = (type) =>{
-    //     const testState = {...this.state};
-    //     let testIngredientCount = testprops.ingredients[type];
-    //     if(testIngredientCount >= 1){
-    //         testIngredientCount = testIngredientCount - 1;
-    //         if (testIngredientCount === 0 ) testState.disabledIngredients[type] = true;
-            
-    //         testprops.ingredients[type] = testIngredientCount;
-    //         this.setState({ingredients : testprops.ingredients,
-    //             disabledIngredients: testState.disabledIngredients});
-    //         this.calcTotalPrice(testprops.ingredients);
-    //     }
-    // }
 
     togglePurchaseState = () =>{        
         const purchaseState = !this.state.purchasing;
@@ -96,21 +49,12 @@ class BurgerBuilder extends Component{
     }
 
     continuePuchaseHandler = () =>{
-        // const orders = {
-        //     ingredients : this.props.ingredients,
-        //     price : this.state.totalPrice,
-        //     customer : {
-        //         Name : 'Gulshan',
-        //         Street : 'Chuna Bhatti',
-        //         City : 'Ragada Patti'
-        //     },
-        //     Delivery : 'Express'
-        // }
+        // url params
         let param = [];
-        for(let i in this.props.ingredients){
-            param.push(i+'='+this.props.ingredients[i])
+        for(let i in this.props.ings){
+            param.push(i+'='+this.props.ings[i])
         }
-        param.push('price='+this.state.totalPrice)
+        param.push('price='+this.props.price)
         param = param.join('&');
         this.props.history.push({
             pathname:'/checkout',
@@ -128,22 +72,31 @@ class BurgerBuilder extends Component{
     }
 
     render(){
-        let burger = null;
-        console.log(this.state.loading);
-        if(this.state.loading)
-        {
-            burger = <Loader />
+        console.log(this.props.ings);
+        
+        //update disable BC buttons
+        let disableinfo = {...this.props.ings};
+        for(let i in disableinfo){
+            disableinfo[i] = !(disableinfo[i] > 0)
         }
-        else{
-            burger = <Burger ingredients={this.props.ings}/>
-        };
+
+        let burger = null;
+        // console.log(this.state.loading);
+        // if(this.state.loading)
+        // {
+        //     burger = <Loader />
+        // }
+        // else{
+        //     burger = <Burger ingredients={this.props.ings}/>
+        // };
+        console.log(this.props.ings,this.props.price);
         burger = <Burger ingredients={this.props.ings}/>
         return(
             <Aux>
                 <Modal show={this.state.purchasing} clicked={this.togglePurchaseState}>
                     <OrderSummary 
-                        ingredients={this.props.ingredients} 
-                        totalprice={this.state.totalPrice}
+                        ingredients={this.props.ings} 
+                        totalprice={this.props.price}
                         cancelpurchase={this.togglePurchaseState}
                         continuepurchase={this.continuePuchaseHandler}
                     />
@@ -154,9 +107,10 @@ class BurgerBuilder extends Component{
                 <BurgerControls 
                     addingredients = {this.props.onIngredientAdded}
                     removeingredients = {this.props.onIngredientRemoved}
-                    canpurchase = {this.state.purchasable}
-                    disablestate = {this.state.disabledIngredients}
+                    canpurchase = {this.props.price > 4}        // purchasable replacement
+                    disablestate = {disableinfo}
                     purchaseState = {this.togglePurchaseState}
+                    price = {this.props.price}
                 />
             </Aux>
         );

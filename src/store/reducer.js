@@ -13,14 +13,14 @@ const INGREDIENT_PRICES = {
     salad: 0.5,
     cheese: 0.4,
     meat: 1.3,
-    bacon: 0.7
+    patty: 0.8
 };
 
-const reducer = (state = initState,action) =>{
-    console.log(action,actionTypes);
+const reducer = (state = initState,action) =>{      //action is from USER
+    console.log(action,actionTypes,state);
     switch ( action.type ) {
         case actionTypes.ADD_INGREDIENT:
-            return {
+            const a = {
                 ...state,
                 ingredients: {
                     ...state.ingredients,
@@ -28,6 +28,8 @@ const reducer = (state = initState,action) =>{
                 },
                 totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName] 
             };
+            console.log(a);
+            return a;
         case actionTypes.REMOVE_INGREDIENT:
             return {
                 ...state,
