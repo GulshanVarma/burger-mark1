@@ -5,8 +5,8 @@ import classes from './BurgerControl.module.css'
 const BurgerControl = (props) =>{  
     return(
         <div className = {classes.BuildControl}>
-            {props.label}
-            <button onClick={props.addingredients}> + </button>
+            <div style={{paddingRight:'15px'}}><strong>{props.label}</strong></div>
+            <button onClick={props.addingredients}>+</button>
             <button disabled={props.disablebutton} onClick={props.removeingredients}> - </button>
         </div>
     )

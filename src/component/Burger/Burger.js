@@ -15,9 +15,9 @@ const burger =(props) =>{
     })
     return(
         <div className = {classes.Burger}>
-        <BurgerIngredients key='111' type='bread'/>
+        <BurgerIngredients key='111' type='bread-top'/>
             {BI}
-        <BurgerIngredients key='112' type='bread'/>
+        <BurgerIngredients key='112' type='bread-bottom'/>
         </div>
 
     )

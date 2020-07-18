@@ -46,7 +46,7 @@ class BurgerBuilder extends Component{
     togglePurchaseState = () =>{        
         const purchaseState = !this.state.purchasing;
         this.setState({purchasing : purchaseState})
-    }
+    } 
 
     continuePuchaseHandler = () =>{
         // url params

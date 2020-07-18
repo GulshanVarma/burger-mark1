@@ -14,7 +14,11 @@
     border: 1px solid #AA6817;
     cursor: pointer;
     outline: none;
+    font-weight: 800;
+    font-size: large;
+    border-radius: 10px;
 }
 .BuildControl button:disabled{
     border-color: red;
+    border-radius: 10px;
 }

@@ -5,8 +5,10 @@ const burgerIngredients =(props) =>{
     const SwitchCase = () =>{
         
         switch (props.type) {
-            case 'bread':
-                return (<div className={classes.bread}>bread</div>);
+            case 'bread-top':
+                return (<div className={classes.breadTop}>bread</div>);
+            case 'bread-bottom':
+                return (<div className={classes.breadBottom}>bread</div>);
             case 'salad':
                 return (<div className={classes.salad}>salad</div>);
             case 'cheese':

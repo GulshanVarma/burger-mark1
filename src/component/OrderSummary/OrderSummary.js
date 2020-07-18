@@ -15,8 +15,8 @@ const OrderSummary = (props) => {
                 </ul>
             <h4> total price = {props.totalprice} $</h4> 
             <div className={classes.buttons}>
-                <Button method={props.continuepurchase} type="green">Continue</Button>
-                <Button method={props.cancelpurchase} type="red">Cancel</Button>
+                <Button method={props.continuepurchase} type="green" show={true}>Continue</Button>
+                <Button method={props.cancelpurchase} type="red" show={true}>Cancel</Button>
                 {/* <button onClick={props.continuepurchase}> continue </button>
                 <button onClick={props.cancelpurchase}> cancel </button>  */}
             </div>

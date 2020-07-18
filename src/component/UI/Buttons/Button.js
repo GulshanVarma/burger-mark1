@@ -10,7 +10,7 @@ const Button = (props) =>{
     }
     else{t_class.push(classes.Green)}
     return(
-        <button className={t_class.join(' ')} onClick={props.method}>{props.children}</button>
+        props.show ? <button className={t_class.join(' ')} onClick={props.method}>{props.children}</button> : null
     )
 }
 

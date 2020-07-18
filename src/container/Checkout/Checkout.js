@@ -3,6 +3,7 @@ import {Component} from 'react'
 import {connect} from 'react-redux'
 import Burger from '../../component/Burger/Burger'
 import classes from '../Checkout/Checkout.module.css'
+import Button from '../../component/UI/Buttons/Button'
 
 class Checkout extends Component{
     state = {
@@ -21,8 +22,8 @@ class Checkout extends Component{
                 
                 <div style={{position: 'absolute', bottom: '0',marginBottom: '15%',left: '0',right: '0'}}>
                     <div className={classes.buttons}>
-                        <button> continue </button>
-                        <button> cancel </button> 
+                        <Button type="green" show={true}>Continue</Button>
+                        <Button type="red" show={true}>Cancel</Button>
                     </div>
                 </div>
             </div>

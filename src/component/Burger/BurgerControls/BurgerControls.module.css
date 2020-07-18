@@ -6,7 +6,7 @@
     align-items: center;
     box-shadow: 0 2px 1px #ccc;
     margin: auto;
-    padding: 10px 0;
+    padding-top: 20px;
     padding-bottom: 15px;
     position: fixed;
     bottom: 0;
@@ -16,10 +16,16 @@
 .BurgerControls .button1{
     display: block;
     font: inherit;
-    background-color: rgb(194, 146, 88);
-    border: 3px solid rgb(90, 52, 5);
+    font-weight: 600;
+    background-color: white;
+    border: 1px solid rgb(90, 52, 5);
+    color: black;
     cursor: pointer;
     outline: none;
-    width: 120px;
+    width: 150px;   
     height: 30px;
+}
+.button1:disabled{
+    background-color:#CF8F2E;
+    border: 3px solid rgb(90, 52, 5);
 }

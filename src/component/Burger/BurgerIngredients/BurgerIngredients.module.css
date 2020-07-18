@@ -9,28 +9,42 @@
     background-color: green;
     width:80%;
     height: 100%;
+    border-radius: 20px;
 }
 .cheese{
     margin:auto;
     background-color: yellow;
     width:80%;
     height: 100%;
+    border-radius: 20px;
 }
 .meat{
     margin:auto;
     background-color: darkred;
     width:80%;
     height: 100%;
+    border-radius: 20px;
 }
 .patty{
     margin:auto;
-    background-color: darkgoldenrod;
+    background-color: rgb(85, 45, 8);
     width:80%;
     height: 100%;
+    border-radius: 20px;
 }
-.bread{
+.breadTop{
     margin:auto;
-    background-color: lightsalmon;
+    background-color: rgb(206, 119, 70);
     width:100%;
     height: 100%;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+}
+.breadBottom{
+    margin:auto;
+    background-color: rgb(206, 119, 70);
+    width:100%;
+    height: 100%;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
