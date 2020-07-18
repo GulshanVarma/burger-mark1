@@ -1,0 +1,18 @@
+.Checkout{
+    background-color: yellow;
+}
+.Checkout button{
+    display: block;
+    font: inherit;
+    padding: 5px;
+    margin: 0 5px;
+    border: 2px solid #AA6817;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  .buttons{    
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+  }

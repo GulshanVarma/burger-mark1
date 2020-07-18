@@ -12,15 +12,6 @@
     bottom: 0;
     top: 65%;
 }
-.BurgerControls button{
-    display: block;
-    font: inherit;
-    padding: 5px;
-    margin: 0 5px;
-    border: 2px solid #AA6817;
-    cursor: pointer;
-    outline: none;
-}
 
 .BurgerControls .button1{
     display: block;

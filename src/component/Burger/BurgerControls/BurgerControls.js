@@ -18,7 +18,7 @@ const BurgerControls = (props) =>{
     // label to display, type to change in ingredients
     return(
         <div className = {classes.BurgerControls}>
-         <p>Current Price: <strong>${props.price.toFixed(2)}</strong></p>
+         <p>Current Price: <strong>${props.price}</strong></p>
             {
                 labelState.map((el,i) => {
                     return <BurgerControl 

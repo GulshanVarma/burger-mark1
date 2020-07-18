@@ -120,8 +120,8 @@ class BurgerBuilder extends Component{
 const mapStateToProps = state => {
     return {
         ings: state.ingredients,
-        price: state.totalPrice
-    };
+        price: parseFloat(state.totalPrice).toFixed(2)
+    };  
 }
 
 const mapDispatchToProps = dispatch => {

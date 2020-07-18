@@ -7,37 +7,36 @@ const initState ={
         meat :  0,
         patty : 0
     },
-    totalPrice:4
+    totalPrice: parseFloat(4)
 };
 const INGREDIENT_PRICES = {
-    salad: 0.5,
-    cheese: 0.4,
-    meat: 1.3,
-    patty: 0.8
+    salad: 0.50,
+    cheese: 0.40,
+    meat: 1.30,
+    patty: 0.80
 };
 
 const reducer = (state = initState,action) =>{      //action is from USER
-    console.log(action,actionTypes,state);
+    console.log(action,actionTypes,state,parseFloat(state.totalPrice));
+    let T_price = parseFloat(state.totalPrice).toFixed(2);
     switch ( action.type ) {
         case actionTypes.ADD_INGREDIENT:
-            const a = {
+            return{
                 ...state,
                 ingredients: {
                     ...state.ingredients,
-                    [action.ingredientName]: state.ingredients[action.ingredientName] + 1
+                    [action.ingredientName]: state.ingredients[action.ingredientName] + 1.0
                 },
-                totalPrice: state.totalPrice + INGREDIENT_PRICES[action.ingredientName] 
+                totalPrice: parseFloat(T_price) + parseFloat(INGREDIENT_PRICES[action.ingredientName]) 
             };
-            console.log(a);
-            return a;
         case actionTypes.REMOVE_INGREDIENT:
             return {
                 ...state,
                 ingredients: {
                     ...state.ingredients,
-                    [action.ingredientName]: state.ingredients[action.ingredientName] - 1
+                    [action.ingredientName]: state.ingredients[action.ingredientName] - 1.0
                 },
-                totalPrice: state.totalPrice - INGREDIENT_PRICES[action.ingredientName]
+                totalPrice: parseFloat(T_price) - parseFloat(INGREDIENT_PRICES[action.ingredientName])
             };
         default:
             return state;

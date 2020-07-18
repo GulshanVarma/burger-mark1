@@ -1,0 +1,19 @@
+.Button{
+    display: block;
+    background-color: wheat;
+    font: inherit;
+    padding: 10px;
+    margin: 0 5px;
+    border: 2px solid black;
+    cursor: pointer;
+    outline: none;
+    font-weight: 500;
+}
+
+.Red{
+    color: red;
+}
+
+.Green{
+    color: yellowgreen;
+}
