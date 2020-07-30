@@ -1,7 +1,7 @@
-.Checkout{
+.CheckoutSummary{
     background-color: yellow;
 }
-.Checkout button{
+.CheckoutSummary button{
     display: block;
     font: inherit;
     padding: 5px;

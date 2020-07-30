@@ -7,10 +7,9 @@
     box-shadow: 0 2px 1px #ccc;
     margin: auto;
     padding-top: 20px;
-    padding-bottom: 15px;
     position: fixed;
     bottom: 0;
-    top: 65%;
+    top: 55%;
 }
 
 .BurgerControls .button1{

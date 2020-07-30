@@ -1,7 +1,6 @@
 import React from 'react'
 import BurgerControl from './BurgerControl/BurgerControl'
 import classes from './BurgerControls.module.css'
-import Button from '../../UI/Buttons/Button'
 
 
 //canPurchase is for order button

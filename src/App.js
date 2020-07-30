@@ -2,7 +2,7 @@ import React from 'react';
 import BurgerBuilder from './container/BurgerBuilder'
 import Layout from './component/UI/layout'
 import classes from './App.module.css';
-import Checkout from './container/Checkout/Checkout'
+import Checkout from './container/Checkout'
 import {Route, Switch} from 'react-router-dom'
 
 function App() {
