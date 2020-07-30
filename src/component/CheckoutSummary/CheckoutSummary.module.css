@@ -1,18 +1,18 @@
 .CheckoutSummary{
     background-color: yellow;
 }
-.CheckoutSummary button{
-    display: block;
-    font: inherit;
-    padding: 5px;
-    margin: 0 5px;
-    border: 2px solid #AA6817;
-    cursor: pointer;
-    outline: none;
-  }
-  
-  .buttons{    
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-  }
+ 
+.buttons{    
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.alignItems{
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 80px;
+  left: 0;
+  right: 0;
+  z-index:100;
+}

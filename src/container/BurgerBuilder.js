@@ -9,16 +9,8 @@ import Axios from '../axiosOrders'
 import {withRouter} from 'react-router-dom'
 import Loader from '../component/UI/Loader/Loader'
 import {connect} from 'react-redux'
-import * as actionTypes from '../store/action';
-// import Loader from '../component/UI/Loader/Loader'
+import * as actionTypes from '../store/actions/action';
 
-// Task : 
-// routing
-    // create checkout component to route
-    // create Taskbar for linkks
-    // add loader spin
-
-// redux
 
 const statePrice = {
     'salad': 1.5,
