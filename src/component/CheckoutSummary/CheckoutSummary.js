@@ -13,8 +13,8 @@ const checkoutSummary = (props) => {
 
             <div style={{ position: 'absolute', bottom: '0', marginBottom: '120px', left: '0', right: '0' }}>
                 <div className={[classes.buttons,classes.alignItems].join(' ')}>
-                    <Button type="green" show={true}>Continue</Button>
-                    <Button type="red" show={true}>Cancel</Button>
+                    <Button type="green" show={true} method={props.checkoutContinue}>Continue</Button>
+                    <Button type="red" show={true} method={props.checkoutCancel}>Cancel</Button>
                 </div>
             </div>
         </div>

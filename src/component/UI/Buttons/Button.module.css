@@ -17,3 +17,7 @@
 .Green{
     color: yellowgreen;
 }
+.Button:disabled{
+    color:red;
+    background-color: white;
+}
