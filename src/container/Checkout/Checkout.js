@@ -6,7 +6,6 @@ import ContactData from './ContactData/ContactData'
 import Aux from '../../hoc/_Aux'
 import { Route } from 'react-router-dom'
 import Modal from '../../component/UI/Modal/Modal'
-import Button from '../../component/UI/Buttons/Button'
 
 class Checkout extends Component {
     state = {

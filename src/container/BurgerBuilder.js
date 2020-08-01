@@ -9,15 +9,8 @@ import Axios from '../axiosOrders'
 import {withRouter} from 'react-router-dom'
 import Loader from '../component/UI/Loader/Loader'
 import {connect} from 'react-redux'
-import * as actionTypes from '../store/actions/action';
+import * as BBActions from '../store/actions/BBActions'
 
-
-const statePrice = {
-    'salad': 1.5,
-    'cheese' : 1.5,
-    'meat' :  3.2,
-    'patty' : 2
-}
 class BurgerBuilder extends Component{
     state = {
         purchasing : false, // when order button is clicked, in purchasing state
@@ -118,8 +111,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onIngredientAdded: (ingName) => dispatch({type: actionTypes.ADD_INGREDIENT, ingredientName: ingName}),
-        onIngredientRemoved: (ingName) => dispatch({type: actionTypes.REMOVE_INGREDIENT, ingredientName: ingName})
+        onIngredientAdded: (ingName) => dispatch(BBActions.addIngs(ingName)),
+        onIngredientRemoved: (ingName) => dispatch(BBActions.removeIngs(ingName))
     }
 }
 
