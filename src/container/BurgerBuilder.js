@@ -9,7 +9,7 @@ import Axios from '../axiosOrders'
 import {withRouter} from 'react-router-dom'
 import Loader from '../component/UI/Loader/Loader'
 import {connect} from 'react-redux'
-import * as BBActions from '../store/actions/BBActions'
+import * as actions from '../store/actions/index'
 
 class BurgerBuilder extends Component{
     state = {
@@ -17,7 +17,9 @@ class BurgerBuilder extends Component{
         loading : true
     }
 
-    // componentWillMount(){
+    componentDidMount(){
+        this.props.initIngredients();
+        console.log('[BB CWM]',this.props.ingredients);
         // Axios.get('./ingredients.json').then(
         //     response =>{
         //         console.log('loading from server');
@@ -26,7 +28,7 @@ class BurgerBuilder extends Component{
         //         this.setState({loading:false});
         //     }
         // ).catch(error => {console.log(error)})
-    // }    
+    }    
 
     togglePurchaseState = () =>{        
         const purchaseState = !this.state.purchasing;
@@ -66,6 +68,7 @@ class BurgerBuilder extends Component{
         }
 
         let burger = null;
+        let BC = null;
         // console.log(this.state.loading);
         // if(this.state.loading)
         // {
@@ -75,7 +78,17 @@ class BurgerBuilder extends Component{
         //     burger = <Burger ingredients={this.props.ings}/>
         // };
         console.log(this.props.ings,this.props.price);
-        burger = <Burger ingredients={this.props.ings}/>
+        if(this.props.ings){
+            burger = <Burger ingredients={this.props.ings}/>
+            BC = <BurgerControls 
+            addingredients = {this.props.onIngredientAdded}
+            removeingredients = {this.props.onIngredientRemoved}
+            canpurchase = {this.props.price > 4}        // purchasable replacement
+            disablestate = {disableinfo}
+            purchaseState = {this.togglePurchaseState}
+            price = {this.props.price}
+        />
+        }
         return(
             <Aux>
                 <Modal show={this.state.purchasing} clicked={this.togglePurchaseState}>
@@ -86,17 +99,8 @@ class BurgerBuilder extends Component{
                         continuepurchase={this.continuePuchaseHandler}
                     />
                 </Modal>
-
                 {burger}
-                
-                <BurgerControls 
-                    addingredients = {this.props.onIngredientAdded}
-                    removeingredients = {this.props.onIngredientRemoved}
-                    canpurchase = {this.props.price > 4}        // purchasable replacement
-                    disablestate = {disableinfo}
-                    purchaseState = {this.togglePurchaseState}
-                    price = {this.props.price}
-                />
+                {BC}
             </Aux>
         );
     }
@@ -111,8 +115,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onIngredientAdded: (ingName) => dispatch(BBActions.addIngs(ingName)),
-        onIngredientRemoved: (ingName) => dispatch(BBActions.removeIngs(ingName))
+        onIngredientAdded: (ingName) => dispatch(actions.addIngs(ingName)),
+        onIngredientRemoved: (ingName) => dispatch(actions.removeIngs(ingName)),
+        initIngredients: () => dispatch(actions.initIngs())
     }
 }
 
