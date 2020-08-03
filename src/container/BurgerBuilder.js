@@ -5,9 +5,7 @@ import BurgerControls from '../component/Burger/BurgerControls/BurgerControls'
 import Modal from '../component/UI/Modal/Modal'
 import OrderSummary from '../component/OrderSummary/OrderSummary'
 import Aux from '../hoc/_Aux'
-import Axios from '../axiosOrders'
 import {withRouter} from 'react-router-dom'
-import Loader from '../component/UI/Loader/Loader'
 import {connect} from 'react-redux'
 import * as actions from '../store/actions/index'
 
@@ -20,14 +18,6 @@ class BurgerBuilder extends Component{
     componentDidMount(){
         this.props.initIngredients();
         console.log('[BB CWM]',this.props.ingredients);
-        // Axios.get('./ingredients.json').then(
-        //     response =>{
-        //         console.log('loading from server');
-        //         this.setState({ingredients: response.data});
-        //         this.calcTotalPrice(response.data);
-        //         this.setState({loading:false});
-        //     }
-        // ).catch(error => {console.log(error)})
     }    
 
     togglePurchaseState = () =>{        

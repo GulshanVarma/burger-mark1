@@ -4,8 +4,9 @@ import { connect } from 'react-redux'
 import CheckoutSummary from '../../component/CheckoutSummary/CheckoutSummary'
 import ContactData from './ContactData/ContactData'
 import Aux from '../../hoc/_Aux'
-import { Route } from 'react-router-dom'
+import { Route, Redirect } from 'react-router-dom'
 import Modal from '../../component/UI/Modal/Modal'
+import OrderAction from '../../store/actions/index'
 
 class Checkout extends Component {
     state = {
@@ -30,7 +31,10 @@ class Checkout extends Component {
     }
 
     checkoutwithContact = () =>{
-        document.write(' send order to server')
+        // document.write(' send order to server')
+        this.props.pushOrder();
+
+
         // orderHandler = (event) => {
         //     event.preventDefault();
         //     this.setState({ loading: true });
@@ -55,8 +59,13 @@ class Checkout extends Component {
     }
 
     render() {
+        let a = null;
+        if(this.props.purchased){
+            a = <Redirect to="/" />
+        }
         return (
             <Aux>
+                {a}
                 <CheckoutSummary
                     ingredients={this.props.ings}
                     price={this.props.price}
@@ -76,8 +85,15 @@ class Checkout extends Component {
 const mapStateToProps = state => {
     return {
         ings: state.ingredients,
-        price: state.totalPrice
+        price: state.totalPrice,
+        purchased : state.purchased
+        order:
     };
+}
+const mapDispatchToProps = dispatch =>{
+    return{
+        pushOrder : dispatch(OrderAction.startPurchase())
+    }
 }
 
 export default connect(mapStateToProps, null)(Checkout);
