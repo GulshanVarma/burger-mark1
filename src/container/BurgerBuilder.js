@@ -8,17 +8,18 @@ import Aux from '../hoc/_Aux'
 import {withRouter} from 'react-router-dom'
 import {connect} from 'react-redux'
 import * as actions from '../store/actions/index'
+import Loader from '../component/UI/Loader/Loader'
+import Backdrop from '../component/UI/Backdrop/Backdrop'
 
 class BurgerBuilder extends Component{
     state = {
         purchasing : false, // when order button is clicked, in purchasing state
         loading : true
     }
-
     componentDidMount(){
-        this.props.initIngredients();
-        console.log('[BB CWM]',this.props.ingredients);
-    }    
+        this.props.initIngredients()
+        console.log('[BB CDM]',this.props.ings);
+    }
 
     togglePurchaseState = () =>{        
         const purchaseState = !this.state.purchasing;
@@ -79,6 +80,9 @@ class BurgerBuilder extends Component{
             price = {this.props.price}
         />
         }
+        else{
+            burger = <Backdrop show={!this.props.ings}><Loader /></Backdrop>
+        }
         return(
             <Aux>
                 <Modal show={this.state.purchasing} clicked={this.togglePurchaseState}>
@@ -98,8 +102,8 @@ class BurgerBuilder extends Component{
 
 const mapStateToProps = state => {
     return {
-        ings: state.ingredients,
-        price: parseFloat(state.totalPrice).toFixed(2)
+        ings: state.burgerBuilder.ingredients,
+        price: parseFloat(state.burgerBuilder.totalPrice).toFixed(2)
     };  
 }
 

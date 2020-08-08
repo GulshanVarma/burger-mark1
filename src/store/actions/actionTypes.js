@@ -4,3 +4,4 @@ export const SET_INGREDIENTS = 'SET_INGREDIENTS';
 
 export const INIT_ORDER = 'INIT_ORDER';
 export const PURCHASE_SUCCESS = 'PURCHASE_SUCCESS';
+export const RESET_ORDER = 'RESET_ORDER';

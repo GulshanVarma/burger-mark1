@@ -45,13 +45,7 @@ const reducer = (state=InitialState,action) =>{
         case ActionTypes.SET_INGREDIENTS:
             console.log('[BB set]',action.data);
             return updateObject( state, {
-                ingredients: {
-                    salad: action.data.salad,
-                    patty: action.data.patty,
-                    cheese: action.data.cheese,
-                    meat: action.data.meat
-                },
-                totalPrice: 4});
+                ingredients: action.data});
         default:
             console.log('[BB Reducer default]');
             return state;

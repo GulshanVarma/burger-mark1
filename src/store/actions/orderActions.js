@@ -7,13 +7,29 @@ export const initPurchase = () =>{
     }
 }
 
-export const startPurchase = () =>{
+export const purchaseSuccess = (OrderData) =>{
+    return{
+        type:OrderActions.PURCHASE_SUCCESS,
+        data: OrderData
+    }
+}
+
+export const startPurchase = (orderData) =>{
+    console.log('[startPurchase]');
     return dispatch => {
         dispatch(initPurchase());
-        axiosOrder.post('./order.json',orderData).
+        axiosOrder.post('./orders.json',orderData).
         then(response => {
-            console.log('response success from order');
-            dispatch({type: OrderActions.PURCHASE_SUCCESS})
+            console.log('response success from order',response.data);
+            dispatch(purchaseSuccess(response.data))
+        }).catch(error => {
+            console.log(error);
         })
+    }
+}
+
+export const resetOrder = () => {
+    return {
+        type: OrderActions.RESET_ORDER
     }
 }

@@ -5,7 +5,8 @@ export {
     setIngs 
 } from './BBActions';
 export {
-    startPurchase
+    startPurchase,
+    resetOrder
 } from './orderActions'
 
 // actions creators to be used from components

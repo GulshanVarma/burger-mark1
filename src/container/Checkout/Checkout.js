@@ -5,8 +5,7 @@ import CheckoutSummary from '../../component/CheckoutSummary/CheckoutSummary'
 import ContactData from './ContactData/ContactData'
 import Aux from '../../hoc/_Aux'
 import { Route, Redirect } from 'react-router-dom'
-import Modal from '../../component/UI/Modal/Modal'
-import OrderAction from '../../store/actions/index'
+import Modal from '../../component/UI/Modal/Modal'  
 
 class Checkout extends Component {
     state = {
@@ -31,7 +30,7 @@ class Checkout extends Component {
     }
 
     checkoutwithContact = () =>{
-        // document.write(' send order to server')
+        console.log(' send order to server')
         this.props.pushOrder();
 
 
@@ -75,7 +74,11 @@ class Checkout extends Component {
                 <Modal show={this.state.show} clicked={this.toggleShow}>
                     <Route
                         path={this.props.match.path + '/contact-data'}
-                        render={(props) => (<ContactData ingredients={this.props.ings} price={this.props.price} order={this.checkoutwithContact}/>)} />
+                        render={(props) => (<ContactData 
+                            ingredients={this.props.ings} 
+                            price={this.props.price}
+                        />)} 
+                    />
                 </Modal>
             </Aux>
         );
@@ -84,16 +87,10 @@ class Checkout extends Component {
 
 const mapStateToProps = state => {
     return {
-        ings: state.ingredients,
-        price: state.totalPrice,
-        purchased : state.purchased
-        order:
+        ings: state.burgerBuilder.ingredients,
+        price: state.burgerBuilder.totalPrice,
+        purchased : state.burgerBuilder.BBpurchased,
     };
-}
-const mapDispatchToProps = dispatch =>{
-    return{
-        pushOrder : dispatch(OrderAction.startPurchase())
-    }
 }
 
 export default connect(mapStateToProps, null)(Checkout);
